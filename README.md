@@ -68,3 +68,21 @@ Demo of node.js/express
 1. Notice there are tons of files when you try to add
 1. `create-react-app` sets up a .gitignore for us, we have to do it by hand here
 1. add `node_modules` to .gitignore
+
+
+## Demo with frontend
+1. `create-react-app` in sibling directory
+1. Add `useState` and `useEffect` to `App.js` to fetch from backend (use Copilot)
+1. Run backend and frontend - see CORS error in browser
+1. Explain CORS (Cross Origin Resource Sharing)
+1. Show the easy, insecure way around this:
+    ```
+    const cors = require('cors');
+    app.use(cors());
+    //...
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    ```
+1. Back to slides
+1. Show how to build and serve React app from Express
+1. Show how we've broken our development environment
+1. Show [proxy middleware](https://blog.logrocket.com/why-you-should-use-proxy-server-create-react-app/)
