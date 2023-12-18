@@ -63,3 +63,8 @@ Demo of node.js/express
     ```
 1. Add tests for path cases
 1. Test the server from a browser
+
+## Committing
+1. Notice there are tons of files when you try to add
+1. `create-react-app` sets up a .gitignore for us, we have to do it by hand here
+1. add `node_modules` to .gitignore
