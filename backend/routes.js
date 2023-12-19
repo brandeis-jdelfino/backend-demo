@@ -8,7 +8,6 @@ function hello(req, res) {
     res.send(`Hello ${name}!`);
 }
 
-router.get('/', hello);
-router.get('/hello/:name', hello)
+router.get('/:name', hello);
 
 export { router, hello };

@@ -5,7 +5,7 @@ function App() {
   let [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/hello/APP', { 
+    fetch('/api/APP', {
       headers: { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
