@@ -11,7 +11,7 @@ Demo of node.js/express
     ```
 1. Create `app.js` and add [Hello world example code](https://expressjs.com/en/starter/hello-world.html)
 1. Demo the default route: `node app.js`
-1. Modify `app.js``, demo the need to reload
+1. Modify `app.js`, demo the need to reload
 1. Install nodemon:
      1. `npm install --save-dev nodemon`
      1. Add command to `package.json`
@@ -38,9 +38,30 @@ Demo of node.js/express
         expect(res.text).toEqual('Hello world!');
     });
     ```
+## Day 2
+
 1. Run test, note warning - explain how `app` is left running
 1. Refactor app.js to pull out routes into `routes.js`
-1. Add unit test of handler:
+```
+app.use('/', router);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
+```
+const express = require('express');
+const router = Router();
+
+function hello(req, res) {
+    const name = req.params?.name ?? "world";
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send(`Hello ${name}!`);
+}
+
+router.get('/', hello);
+```
+1. Add unit test of handler to `routes.test.js`:
    ```
     it('handles hello', () => {
         const req = {  };
@@ -52,6 +73,11 @@ Demo of node.js/express
         expect(res.text).toEqual('Hello world!');
     });   
    ```
+1. Change integration test to use dummy app:
+```
+const app = new express();
+app.use('/', router);
+```
 1. Add parameterized path to `routes.js`:
     ```
     function hello(req, res) {
